@@ -1,0 +1,46 @@
+---
+title: "prac1_exercises"
+author: "Lucie Dvorakova"
+---
+this function rounds a number into the nearest whole number
+```{r}
+round(3.14159)
+```
+this function rounds a number to the first two digits
+```{r}
+round(3.14159, digits = 2)
+```
+this function repeats a number (x) a specific number of times (times)
+```{r}
+print(rep(x = 5, times = 7))
+```
+here we have a character variable
+```{r}
+fruit <- "apple"
+print(fruit)
+print(class(fruit))
+#next we have a numerical variable
+number <- 5
+print(number)
+print(class(number))
+#and finally onto a logical variable
+wednesday <- TRUE
+print(wednesday)
+print(class(wednesday))
+```
+attributes of two batches of cells
+```{r}
+#attributes of treated batch
+cell_ID_1 <- "CX1"
+treated_1 <- TRUE
+num_cells_before_1 <- 5415
+num_cells_after_1 <- 1432 
+
+
+#attributes of non-treated batch
+cell_ID_2 <- "CX2"
+treated_2 <- FALSE
+num_cells_before_2 <- 8123
+num_cells_after_2 <- 7543
+```
+
