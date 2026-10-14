@@ -2,6 +2,11 @@
 title: "prac1_exercises"
 author: "Lucie Dvorakova"
 ---
+```{r}
+library(tidyverse)
+library(gt)
+```
+
 this function rounds a number into the nearest whole number
 ```{r}
 round(3.14159)
@@ -42,5 +47,38 @@ cell_ID_2 <- "CX2"
 treated_2 <- FALSE
 num_cells_before_2 <- 8123
 num_cells_after_2 <- 7543
+```
+
+attributes of two batches of cells as vectors
+```{r}
+#vector for ID
+cell_ID <- c("CX1", "CX2")
+print(cell_ID)
+#vector for treatment
+treated <- c(TRUE, FALSE)
+print(treated)
+#vector for number of cells before
+num_cells_before <- c(5415, 8123)
+print(num_cells_before)
+#vector for number of cells after
+num_cells_after <- c(1432, 7543)
+print(num_cells_after)
+```
+another vector exercise
+```{r}
+all_my_pets <- c("dog", "horse", "guinea pig", "chicken", "cat")
+would_eat <- all_my_pets[4]
+print(would_eat)
+```
+
+data frame for attributions of cell batches
+```{r}
+my_data_frame <- tibble(
+  cell_ID = cell_ID,
+  treated = treated,
+  num_cells_before = num_cells_before,
+  num_cells_after = num_cells_after
+)
+gt(my_data_frame)
 ```
 

@@ -1,0 +1,26 @@
+---
+title: "ukhsa data analysis"
+author: "Lucie Dvorakova"
+---
+```{r}
+library(tidyverse)
+library(gt)
+```
+UKHSA dataset for new HIV diagnoses in England
+```{r}
+hiv <- read_csv("data/ukhsa-chart-hiv.csv")
+
+gt(head(hiv))
+```
+graph for the table of new HIV diagnoses
+```{r}
+ggplot(hiv, aes(
+  x = date,
+  y = metric_value
+)) +
+  geom_line(colour = "pink") + 
+  xlab("Date") +
+  ylab("Number of New Diagnoses") +
+  ggtitle("New HIV Diagnoses")
+```
+
