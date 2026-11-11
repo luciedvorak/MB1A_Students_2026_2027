@@ -1,0 +1,66 @@
+---
+title: "worked_example"
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this 
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+```
+bird breeding site location table
+```{r}
+bird_breeding_sites <- read_csv("data/breeding_site_locations.csv")
+gt(bird_breeding_sites)
+```
+bird breeding migratory connectivity table
+```{r}
+bird_migration_sites <- read_csv("data/migratory_connectivity_dataset.csv")
+gt(head(bird_migration_sites))
+```
+filtering data for breeding site locations
+```{r}
+bird_breeding_selected <- bird_breeding_sites |>
+  select(Site, Longitude, Latitude) |>
+  distinct() |>
+  rename(Breeding_Longitude = Longitude, Breeding_Latitude = Latitude)
+
+gt(bird_breeding_selected)
+```
+filtering data for migration sites
+```{r}
+bird_migration_selected <- bird_migration_sites |>
+  select(Site, winterLongitude, winterLatitude, pslon, pslat, iblon, iblat, awestlon, awestlat) |>
+  distinct() |>
+  rename(Winter_Longitude = winterLongitude, Winter_Latitude = winterLatitude, Stopover_Longitude = pslon, Stopover_Latitude = pslat, Iberian_Longitude = iblon, Iberian_Latitude = iblat, Westmost_Longitude = awestlon, Westmost_Latitude = awestlat)
+
+gt(head(bird_migration_selected))
+
+#excluding spain from breeding sites
+bird_breeding_exc <- bird_breeding_selected |> filter(Site != "Spain")
+gt(head(bird_breeding_exc))
+
+#excluding spain from migration sites
+bird_migration_exc <- bird_migration_selected |> filter(Site != "Spain")
+gt(head(bird_migration_exc))
+```
+
